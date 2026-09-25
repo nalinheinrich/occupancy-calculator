@@ -149,7 +149,8 @@ occupancy-calculator/
 ├── LICENSE
 ├── .gitignore
 ├── package.json
-├── tsconfig.json
+├── tsconfig.json          browser app (webapp/src)
+├── tsconfig.node.json     Node code (scripts/, vite.config.ts)
 ├── vite.config.ts
 ├── webapp/
 │   ├── index.html

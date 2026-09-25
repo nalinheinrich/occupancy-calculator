@@ -1,4 +1,7 @@
 {
+  // Browser app (webapp/src). No Node.js types here, so Node-only APIs such as
+  // process or Buffer are flagged instead of crashing at runtime in the browser.
+  // Vite's client types come from webapp/src/vite-env.d.ts.
   "compilerOptions": {
     "target": "ES2020",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -14,7 +17,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "types": ["node"]
+    "types": []
   },
-  "include": ["webapp/src", "scripts"]
+  "include": ["webapp/src"]
 }
