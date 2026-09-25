@@ -83,7 +83,24 @@ npm run generate-data                  # rebuilds the synthetic sample-data/
 
 # your own files
 npm run scorecard -- --metrics ./private-data/report.csv --roster ./private-data/roster.xlsx
+
+# list a script's options
+npm run occupancy -- --help
 ```
+
+```
+┌──────────────────────┬──────────────────────────────────────┬──────────────────────┐
+│ Script               │ Options                              │ Rules                │
+├──────────────────────┼──────────────────────────────────────┼──────────────────────┤
+│ occupancy            │ --metrics --bucket --all-profiles    │ bucket = 30 or 60    │
+│ scorecard            │ --metrics --roster --out --tolerance │ tolerance ≥ 0 (min)  │
+│                      │ --all-profiles                       │                      │
+│ merge                │ --metrics --roster --out             │                      │
+│ generate-data        │ --seed                               │ whole number         │
+└──────────────────────┴──────────────────────────────────────┴──────────────────────┘
+```
+
+Both `--bucket 60` and `--bucket=60` work. A typo, a missing value, a missing file or a wrong file type stops the script with a one-line `Error:` message and exit code 1.
 
 `output/` and `private-data/` are git-ignored.
 

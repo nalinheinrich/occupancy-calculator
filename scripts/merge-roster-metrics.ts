@@ -4,21 +4,28 @@
  *
  *   npm run merge
  *   npm run merge -- --metrics report.csv --roster roster.xlsx --out output/merged.csv
+ *   npm run merge -- --help
  */
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
+import { fail, loadMetrics, loadRoster, METRICS_OPTION, parseArgs, ROSTER_OPTION } from './cli';
 import { AUX_FIELDS } from '../webapp/src/types/metrics';
-import { intervalLabel, parseMetricsCSV } from '../webapp/src/utils/metricsParser';
+import { intervalLabel } from '../webapp/src/utils/metricsParser';
 import { auxTime, occupancyPct } from '../webapp/src/utils/occupancyCalc';
-import { parseRosterWorkbook } from '../webapp/src/utils/rosterParser';
 import { mergeRosterMetrics } from '../webapp/src/utils/scorecardGenerator';
 
-const args = process.argv.slice(2);
-const opt = (name: string, def: string) => { const i = args.indexOf(`--${name}`); return i >= 0 ? args[i + 1] : def; };
+const opts = parseArgs(
+  'Join the roster to the metrics export (Alias = Agent) and write one enriched row per metrics row.\n\nUsage: npm run merge -- [options]',
+  {
+    metrics: METRICS_OPTION,
+    roster: ROSTER_OPTION,
+    out: { kind: 'string', help: 'Output CSV path', default: 'output/merged-roster-metrics.csv' },
+  },
+);
 
-const metrics = parseMetricsCSV(readFileSync(resolve(opt('metrics', 'sample-data/sample-historical-metrics.csv')), 'utf8'));
-const { roster } = parseRosterWorkbook(readFileSync(resolve(opt('roster', 'sample-data/sample-daily-roster.xlsx'))));
-const out = resolve(opt('out', 'output/merged-roster-metrics.csv'));
+const { rows: metrics } = loadMetrics(opts.metrics);
+const { roster } = loadRoster(opts.roster);
+const out = resolve(opts.out);
 
 const merged = mergeRosterMetrics(roster, metrics);
 const q = (v: unknown) => { const s = v === null || v === undefined ? '' : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
@@ -40,8 +47,12 @@ for (const m of merged) {
       ...AUX_FIELDS.map((f) => r[f]), auxTime(r), occ === null ? '' : occ.toFixed(2), r.occupancySource ?? '', r.contactsHandled, r.avgHandleTime].map(q).join(','));
   }
 }
-mkdirSync(dirname(out), { recursive: true });
-writeFileSync(out, lines.join('\n') + '\n');
+try {
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, lines.join('\n') + '\n');
+} catch (e) {
+  fail(`could not write ${out}: ${(e as Error).message}`);
+}
 
 const by = (s: string) => merged.filter((m) => m.status === s).map((m) => m.alias);
 console.log(`Roster agents: ${roster.length}   Metrics agents: ${new Set(metrics.map((r) => r.agent.toLowerCase())).size}`);

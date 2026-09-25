@@ -6,14 +6,25 @@
  *
  *   npm run generate-data            # deterministic (seed 42)
  *   npm run generate-data -- --seed 7
+ *   npm run generate-data -- --help
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import * as XLSX from 'xlsx';
+import { parseArgs } from './cli';
 
-const args = process.argv.slice(2);
-const seedArg = args.indexOf('--seed');
-let seed = seedArg >= 0 ? Number(args[seedArg + 1]) : 42;
+const opts = parseArgs(
+  'Regenerate the synthetic files in sample-data/. The same seed always produces the same files.\n\nUsage: npm run generate-data -- [options]',
+  {
+    seed: {
+      kind: 'number',
+      help: 'Random seed (whole number)',
+      default: 42,
+      check: (n) => (Number.isSafeInteger(n) ? null : 'must be a whole number'),
+    },
+  },
+);
+let seed = opts.seed;
 const OUT = resolve('sample-data');
 const DATE = '2026-01-15'; // fictional business day
 const TZ = '-07:00';

@@ -179,6 +179,7 @@ occupancy-calculator/
 │           ├── metrics.ts
 │           └── scorecard.ts
 ├── scripts/
+│   ├── cli.ts                     shared option parsing + error messages
 │   ├── calculate-occupancy.ts
 │   ├── generate-scorecard.ts
 │   ├── merge-roster-metrics.ts
@@ -219,7 +220,10 @@ npm run scorecard       # output/agent-scorecards.csv
 npm run merge           # output/merged-roster-metrics.csv + join report
 npm run generate-data   # rebuild sample-data/ (seed 42; --seed N for another day)
 npm run scorecard -- --metrics private-data/report.csv --roster private-data/roster.xlsx
+npm run occupancy -- --help   # every script lists its options with --help
 ```
+
+Options accept `--name value` or `--name=value`. Unknown options, missing values and invalid numbers (e.g. `--bucket 15`) stop with a one-line error.
 
 ## 📈 Analytics use cases
 
