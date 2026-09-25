@@ -1,0 +1,41 @@
+:root {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #111827;
+  background: #f9fafb;
+  --green: #047857;
+  --yellow: #92400e;
+  --red: #b91c1c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+header { background: #232f3e; color: #fff; padding: 12px 24px; }
+header h1 { margin: 0; font-size: 1.25rem; }
+header p { margin: 4px 0 0; font-size: 0.85rem; color: #d1d5db; }
+nav[role='tablist'] { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 24px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+nav button { border: 1px solid #d1d5db; background: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+nav button[aria-selected='true'] { background: #232f3e; color: #fff; border-color: #232f3e; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #2563eb; outline-offset: 2px; }
+main { padding: 16px 24px; max-width: 1400px; }
+section { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+h2 { margin-top: 0; font-size: 1.1rem; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.kpi { border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; }
+.kpi .label { font-size: 0.8rem; color: #4b5563; }
+.kpi .value { font-size: 1.5rem; font-weight: 600; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+caption { text-align: left; font-weight: 600; padding-bottom: 6px; }
+th, td { border-bottom: 1px solid #e5e7eb; padding: 6px 8px; text-align: left; white-space: nowrap; }
+th { background: #f3f4f6; position: sticky; top: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.on-target { color: var(--green); font-weight: 600; }
+.moderate { color: var(--yellow); font-weight: 600; }
+.low { color: var(--red); font-weight: 600; }
+.no-data { color: #6b7280; }
+.cell-on-target { background: #d1fae5; }
+.cell-moderate { background: #fef3c7; }
+.cell-low { background: #fee2e2; }
+.muted { color: #4b5563; font-size: 0.85rem; }
+.row { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; }
+label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; }
+.error { color: var(--red); }

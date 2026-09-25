@@ -1,0 +1,21 @@
+Alias,Name,Standing,Role,Shift,Start,End,AHT (min),Break 1,Lunch,Break 2,Cross Trained
+grajenn,"Jennings, Gray",Active,Dispatcher,SUN-THU,9:00AM,5:30PM,1.1,10:45AM,12:30PM,3:30PM,
+juliver,"Ivers, Jules",Active,Dispatcher,MON-FRI,9:00AM,5:30PM,1.0,10:30AM,1:00PM,4:00PM,
+umbquim,"Quimby, Umber",Active,Dispatcher,SUN-THU,9:00AM,5:30PM,2.0,10:30AM,1:30PM,4:00PM,
+quioakr,"Oakridge, Quinn",Active,Dispatcher,SUN-THU,9:00AM,5:30PM,2.0,11:15AM,1:30PM,4:30PM,
+caswhit,"Whitlock, Casey",Active,Dispatcher,MON-FRI,9:00AM,5:30PM,1.5,--,12:30PM,4:30PM,BACKOFFICE
+aveunde,"Underhill, Avery",Active,Dispatcher,WED-SUN,9:00AM,5:30PM,2.0,10:45AM,1:30PM,4:00PM,"CHAT, EMAIL"
+morvant,"Vantreese, Morgan",Active,Dispatcher,WED-SUN,6:00AM,2:30PM,1.5,7:45AM,9:30AM,12:00PM,
+finmerr,"Merriweather, Finley",Active,Dispatcher,THU-MON,6:00AM,2:30PM,,7:45AM,10:00AM,11:45AM,
+reethor,"Thornbury, Reese",Active,Dispatcher,SUN-THU,6:00AM,2:30PM,1.7,8:00AM,10:00AM,11:45AM,
+blaster,"Sterling, Blake",Active,Dispatcher,MON-THU,7:30AM,6:00PM,1.0,9:00AM,12:30PM,4:45PM,EMAIL
+parrave,"Ravenscroft, Parker",Active,Senior Dispatcher,SUN-THU,9:00AM,5:30PM,2.4,--,1:00PM,3:30PM,
+indfair,"Fairbanks, Indigo",Active,Senior Dispatcher,THU-MON,9:00AM,5:30PM,2.3,10:30AM,12:30PM,3:30PM,
+logever,"Everly, Logan",Active,Bilingual,SUN-THU,6:00AM,2:30PM,2.3,7:45AM,10:00AM,12:00PM,
+tatlark,"Larkspur, Tatum",Active,Escalations,MON-FRI,9:00AM,5:30PM,2.9,11:15AM,1:30PM,4:30PM,
+harhart,"Hartwell, Harper",Active,Escalations,SUN-THU,9:00AM,5:30PM,3.0,--,1:30PM,3:30PM,
+noenort,"Northcott, Noel",Active,Trainer,MON-FRI,9:00AM,5:30PM,1.5,10:45AM,1:00PM,4:00PM,
+valcall,"Calloway, Vale",Active,Seasonal,SUN-THU,9:00AM,5:30PM,1.9,10:30AM,1:30PM,3:30PM,
+ellyard,"Yardley, Elliot",Active,Seasonal,WED-SUN,9:00AM,5:30PM,2.0,--,1:00PM,3:30PM,CHAT
+wreking,"Kingsley, Wren",,Extra Time,,9:30AM,2:30PM,,11:30AM,,,
+danpemb,"Pemberton, Dana",,Extra Time,,9:30AM,2:30PM,,11:30AM,,,
