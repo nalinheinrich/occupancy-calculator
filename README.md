@@ -150,8 +150,7 @@ occupancy-calculator/
 ├── .gitignore
 ├── package.json
 ├── tsconfig.json          browser app (webapp/src)
-├── tsconfig.node.json     Node code (scripts/, vite.config.ts)
-├── vite.config.ts
+├── vite.config.ts         (type-checked by scripts/tsconfig.json)
 ├── webapp/
 │   ├── index.html
 │   └── src/
@@ -179,6 +178,7 @@ occupancy-calculator/
 │           ├── metrics.ts
 │           └── scorecard.ts
 ├── scripts/
+│   ├── tsconfig.json              Node settings for scripts/ + vite.config.ts
 │   ├── cli.ts                     shared option parsing + error messages
 │   ├── calculate-occupancy.ts
 │   ├── generate-scorecard.ts

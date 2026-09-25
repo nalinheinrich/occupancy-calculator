@@ -1,6 +1,8 @@
 {
-  // Node.js code: CLI scripts and the Vite config. Scripts import the shared
-  // calculation code in webapp/src/utils, which is checked here as well.
+  // Node.js code: the CLI scripts in this folder and the root vite.config.ts.
+  // Named tsconfig.json so editors pick it up automatically for files in scripts/.
+  // The scripts import the shared calculation code in webapp/src/utils, which is
+  // type-checked here as well.
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2022"],
@@ -17,5 +19,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["scripts", "vite.config.ts"]
+  "include": ["./**/*.ts", "../vite.config.ts"]
 }
