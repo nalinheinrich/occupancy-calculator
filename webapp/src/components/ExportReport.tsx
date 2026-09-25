@@ -7,7 +7,9 @@ function download(name: string, text: string) {
   a.href = url;
   a.download = name;
   a.click();
-  URL.revokeObjectURL(url);
+  // Revoke after the browser has started the download; revoking synchronously
+  // can cancel it in some browsers.
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function intervalsToCSV(rows: IntervalSummary[]): string {

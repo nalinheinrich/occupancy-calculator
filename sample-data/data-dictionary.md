@@ -87,7 +87,7 @@ All cells are stored as text.
 
 ## 3. Historical Metrics Report
 
-Same 24 columns as an Amazon Connect agent-level historical metrics export. One row = one agent × one routing profile × one 30-minute interval. Times are **seconds**; a blank cell means "no activity of that type".
+Column layout of an agent-level historical metrics report with 30-minute intervals. The first 8 and last 4 columns are standard metrics; columns 9–20 are time-in-status columns for 12 example agent statuses, so a real export will only have them if your instance uses statuses with these names. One row = one agent × one routing profile × one 30-minute interval. Times are **seconds**; a blank cell means "no activity of that type".
 
 | # | Column | Type | Description | Non-blank |
 |---|--------|------|-------------|-----------|
@@ -116,7 +116,7 @@ Same 24 columns as an Amazon Connect agent-level historical metrics export. One 
 | 23 | `Average handle time` | seconds | AHT for the interval | 253 |
 | 24 | `Contacts handled` | count | Contacts in the interval | 253 |
 
-Columns 9–20 are the **12 non-productive (aux) categories**. The names of columns 9–20 are custom agent statuses; rename them in `METRICS_HEADER_MAP` if your statuses differ.
+Columns 9–20 are the **12 non-productive (aux) categories**. If your statuses have different names, update `METRICS_HEADER_MAP`, `AUX_FIELDS` and `AUX_LABELS`.
 
 Distribution:
 - One date (2026-01-15), 16 interval starts from 09:00 to 16:30.
@@ -159,4 +159,4 @@ Alias (roster) = Agent (metrics) = Alias (PTO)        case-insensitive, trimmed
 2. Break (≈15 min) and lunch (≈30 min) seconds are placed at the roster times.
 3. Personal, huddle, training, unproductive and approved time are added at random rates.
 4. Available = online − non-productive. Contact = available × the agent's occupancy level ± noise (morning intervals slightly busier, late afternoon quieter).
-5. Contacts = contact ÷ an AHT drawn around the roster baseline. One agent (`umbquim`) runs 50% slower than baseline and one (`caswhit`) has a low occupancy level, so the flags have something to show.
+5. Contacts = contact ÷ an AHT drawn around the roster baseline. One agent (`umbquim`) is generated with a 1.5× AHT multiplier (result: 3.21 min vs a 2.0 min baseline), and one (`caswhit`) with a low occupancy level (result: 54.3%), so the flags have something to show.
